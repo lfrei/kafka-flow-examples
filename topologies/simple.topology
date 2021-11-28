@@ -1,0 +1,9 @@
+Topologies:
+   Sub-topology: 0
+    Source: SOURCE (topics: [input])
+      --> FILTER
+    Processor: FILTER (stores: [])
+      --> SINK
+      <-- SOURCE
+    Sink: SINK (topic: output)
+      <-- FILTER

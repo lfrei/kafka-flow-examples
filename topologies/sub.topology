@@ -1,0 +1,26 @@
+Topologies:
+   Sub-topology: 0
+    Source:  SOURCE-1 (topics: [input])
+	--> TRANSFORM
+	Processor: TRANSFORM (stores: [state-store-1])
+	--> KEY-SELECT
+	<-- SOURCE-1
+	Processor: KEY-SELECT (stores: [])
+	--> FILTER
+	<-- TRANSFORM
+	Processor: FILTER (stores: [])
+	--> SINK-1
+	<-- KEY-SELECT
+	Sink: SINK-1 (topic: repartition)
+	<-- FILTER
+   Sub-topology: 1
+    Source: SOURCE-2 (topics: [repartition])
+	--> AGGREGATE
+	Processor: AGGREGATE (stores: [state-store-2])
+	--> TOSTREAM
+	<-- SOURCE-2
+	Processor: TOSTREAM (stores: [])
+	--> SINK-2
+	<-- AGGREGATE
+	Sink: SINK-2 (topic: output)
+	<-- TOSTREAM

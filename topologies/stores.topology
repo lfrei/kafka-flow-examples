@@ -1,0 +1,9 @@
+Topologies:
+   Sub-topology: 0
+    Source: SOURCE (topics: [input])
+      --> AGGREGATE
+    Processor: AGGREGATE (stores: [state-store])
+      --> SINK
+      <-- SOURCE
+    Sink: SINK (topic: output)
+      <-- AGGREGATE

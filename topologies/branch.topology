@@ -1,0 +1,17 @@
+Topologies:
+   Sub-topology: 0
+    Source: SOURCE (topics: [input])
+      --> MAPVALUES, TRANSFORM
+    Processor: MAPVALUES (stores: [])
+      --> FILTER
+      <-- SOURCE
+    Processor: FILTER (stores: [])
+      --> SINK-1
+      <-- MAPVALUES
+    Processor: TRANSFORM (stores: [state-store])
+      --> SINK-2
+      <-- Source
+    Sink: SINK-1 (topic: output-1)
+      <-- TRANSFORM
+    Sink: SINK-2 (topic: output-2)
+      <-- FILTER
